@@ -1,0 +1,13 @@
+TF_vars_file_2='/cellar/users/decarlin/projects/progenitor_inference/results/Novershtern_results_TF1/TF_beta_vars.txt'
+
+posttrial_mat_1=
+
+load(posttrial_mat_1);
+
+gene_var_1=var(beta');
+
+load(posttrial_mat_2);
+
+gene_var_2=var(beta');
+
+plot(gene_var_1,gene_var_2)

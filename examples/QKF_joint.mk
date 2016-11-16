@@ -1,0 +1,33 @@
+$RBM_HOME='/cellar/users/decarlin/projects/DomainRegulation'
+$MATLAB_HOME='/cellar/users/decarlin/projects/progenitor_inference'
+
+QKF_joint_TF1: QKF_joint_TF1_regression QKF_joint_TF1_post
+
+QKF_joint_extract_regulators:
+	matlab -r "addpath('/cellar/users/decarlin/projects/progenitor_inference'); \
+	pretrial_mat='/cellar/users/decarlin/projects/progenitor_inference/results/all_pretrial_QKF_joint_TF1.mat'; \
+	posttrial_mat='/cellar/users/decarlin/projects/progenitor_inference/results/QKF_joint_TF1_post_run.mat'; \
+	output_file='/cellar/users/decarlin/projects/progenitor_inference/results/QKF_joint_TF1_complete_betas.txt'; \
+	extract_full_regulators_matrix; \
+	quit;"
+
+QKF_joint_regression:
+	matlab -r "addpath('/cellar/users/decarlin/projects/progenitor_inference'); \
+	indata='/cellar/users/decarlin/projects/QKF_joint/rbm_output/QKF_joint_TF1.tab'; \
+	indesc='/cellar/users/decarlin/projects/QKF_joint/data/metastable_graph_20_states_memberships.csv'; \
+	devgraph='/cellar/users/decarlin/projects/QKF_joint/data/scimitar_output_graph.sif';\
+	run_name='QKF_joint_TF1'; \
+	output_path='/cellar/users/decarlin/projects/progenitor_inference/results/';\
+	blank_GGFL;\
+	quit;"
+
+QKF_joint_TF1_post: QKF_joint_TF1_RBM
+	../post_rbm_analysis.py -d /Users/danielcarlin/Data/QKF_joint/data_standard_t.tab -r rbm_output/QKF_joint_TF1.tab -c post_rbm_corr/QKF_joint_TF1_corr.tab -n post_rbm_corr/QKF_joint_TF1_null.tab
+
+QKF_joint_TF1_RBM:
+	/cellar/users/decarlin/projects/DomainRegulation/theano_maskedRBM.py \
+	-d /cellar/users/decarlin/projects/QKF_joint/data/data_centered_scaled_hugo_t.tab \
+	-r /cellar/users/decarlin/projects/TF_collections/TF_collection_1_regulatory_filtlered5.list_t \
+	-o /cellar/users/decarlin/projects/QKF_joint/rbm_output/QKF_joint_TF1.tab \
+	-m /cellar/users/decarlin/projects/QKF_joint/rbm_output/QKF_joint_TF1_connections.tab
+ 
