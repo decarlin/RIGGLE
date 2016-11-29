@@ -1,6 +1,16 @@
 $RBM_HOME='/cellar/users/decarlin/projects/DomainRegulation'
 $MATLAB_HOME='/cellar/users/decarlin/projects/progenitor_inference'
 
+Benitez_PDX1_experiment:
+	../scripts/RIGGLE.py \
+	-s Benitez_PDX1 \
+	-d /cellar/users/decarlin/Data/Benitez/data_centered_scaled_hugo_t.tab \
+	-r /cellar/users/decarlin/projects/TF_collections/TF_collection_1_regulatory_filtlered5_withPDX1supp.list_t \
+	-D /cellar/users/decarlin/projects/RIGGLE_results/Benitez_PDX1 \
+	-m /cellar/users/decarlin/Data/Benitez/cell_fate_map.sif \
+	-M /cellar/users/decarlin/Data/Benitez/cell_type.tab \
+	-R /cellar/users/decarlin/Data/Benitez/pancreas_tfs.txt
+
 Benitez_TF1: Benitez_TF1_post Benitez_TF1_regression  Benitez_significance_test Benitez_extract_regulators
 
 Ben_TF1_master_table:

@@ -41,7 +41,7 @@ if __name__=='__main__':
 
         #here we run train the RBM
         subprocess.check_call([dir_path+'/theano_maskedRBM.py -d '+opts.train_data_file +' -r '+opts.regulator_list_file+' -o '+opts.run_directory+'/'+opts.study_name+'.tab'+' -m '+opts.run_directory+'/'+opts.study_name+'_connections.tab'],shell=True)
-        regression_input=opts.run_directory+opts.study_name+'.tab'
+        regression_input=opts.run_directory+'/'+opts.study_name+'.tab'
     else:
         regression_input=opts.train_data_file
 
