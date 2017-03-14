@@ -32,3 +32,4 @@ for (i in 1:dim(graph)[1])
 
 	fit <- lmFit(minimalSet, d)
 }
+
