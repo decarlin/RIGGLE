@@ -275,6 +275,9 @@ def train_masked_rbm(train_set_x_full_df,
 
     [regulators_agree,train_set_x_full,entities_agree]=makeMatricesAgree(regulators.interaction_matrix.toarray(),regulators.entities_order,train_set_x_full_df,entities_x)
 
+    train_set_x_full=numpy.nan_to_num(train_set_x_full)
+    regulators_agree=numpy.nan_to_num(regulators_agree)
+
     train_set_x_full = theano.shared(numpy.asarray(train_set_x_full,
                                                dtype=theano.config.floatX),
                                  borrow=True)
@@ -383,6 +386,8 @@ if __name__ == '__main__':
     train_set_x_full_df = pandas.read_table(opts.train_data_file)
     regulators=rs.regulator_list(opts.regulator_list_file)
     #opts.c_mat_file='/Users/danielcarlin/PycharmProjects/DomainRegulation/conn_out.tab'
+
+    #fill in NA's with zero's
 
     if xval:
         cross_train_masked_RBM(x_full_df=train_set_x_full_df,regulators=regulators)

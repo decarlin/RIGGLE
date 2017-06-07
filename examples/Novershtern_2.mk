@@ -1,3 +1,14 @@
+Nov_TF2:
+	../scripts/RIGGLE.py \
+	-l 0.01 \
+	-s Novershtern_TF2 \
+	-d /cellar/users/decarlin/Data/Novershtern/data_standard_t.tab \
+	-r /cellar/users/decarlin/projects/TF_collections/TF_collection_2_regulatory_filtlered5_selfLoops.list_t \
+	-D /cellar/users/decarlin/projects/RIGGLE_results/Novershtern_TF2 \
+	-m /cellar/users/decarlin/Data/Novershtern/cell_type_graph.sif \
+	-M /cellar/users/decarlin/Data/Novershtern/sample_descriptions.txt \
+	-R /cellar/users/decarlin/projects/progenitor_inference/reference_genesets/hemo_tfs.txt
+
 Nov:
 	../scripts/RIGGLE.py \
 	-s Novershtern_TF1_1 \
@@ -69,6 +80,14 @@ Nov_1_1_sig:
 	regression_variance_cdf_geneset; \
 	quit;"
 
+Nov_1_1_pdf:
+	matlab -r "addpath('/cellar/users/decarlin/projects/RIGGLE/scripts'); \
+	pretrial_mat='/cellar/users/decarlin/projects/RIGGLE_results/Novershtern_TF1_1/all_pretrial_Novershtern_TF1_1.mat'; \
+	posttrial_mat='/cellar/users/decarlin/projects/RIGGLE_results/Novershtern_TF1_1/Novershtern_TF1_1_post_run.mat'; \
+	ref_file='/cellar/users/decarlin/projects/progenitor_inference/reference_genesets/hemo_tfs.txt'; \
+	figure_location='/cellar/users/decarlin/projects/RIGGLE_results/Novershtern_TF1_1/figures/'; \
+	regression_variance_ksdensity_geneset; \
+	quit;"
 
 QKF:
 	../scripts/RIGGLE.py \

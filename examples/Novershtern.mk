@@ -52,6 +52,15 @@ Novershtern_significance_test:
 	regression_variance_boxplot_geneset; \
 	quit;"
 
+Novershtern_pdf:
+	matlab -r "addpath('/cellar/users/decarlin/projects/RIGGLE/scripts'); \
+	pretrial_mat='/cellar/users/decarlin/projects/progenitor_inference/results/Novershtern_results_TF1/all_pretrial_Novershtern_TF1.mat'; \
+	posttrial_mat='/cellar/users/decarlin/projects/progenitor_inference/results/Novershtern_results_TF1/Novershtern_TF1_post_run.mat'; \
+	ref_file='/cellar/users/decarlin/projects/progenitor_inference/reference_genesets/hemo_tfs.txt'; \
+	figure_location='/cellar/users/decarlin/projects/progenitor_inference/results/Novershtern_results_TF1/figures/'; \
+	regression_variance_ksdensity_geneset; \
+	quit;"
+
 Novershtern_push_ndex: Novershtern_regression
 	python /cellar/users/decarlin/projects/ndex-progenitor-nets/progenitor_nets.py \
 	-s Novershtern \

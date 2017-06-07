@@ -1,6 +1,28 @@
 $RBM_HOME='/cellar/users/decarlin/projects/DomainRegulation'
 $MATLAB_HOME='/cellar/users/decarlin/projects/progenitor_inference'
 
+Benitez_TF2_selfLoops:
+	../scripts/RIGGLE.py \
+	-l 0.01 \
+	-s Benitez_TF2_selfLoops \
+	-d /cellar/users/decarlin/Data/Benitez/data_centered_scaled_hugo_t.tab \
+	-r /cellar/users/decarlin/projects/TF_collections/TF_collection_3_regulatory_filtlered5_selfLoops.list_t \
+	-D /cellar/users/decarlin/projects/RIGGLE_results/Benitez_TF2_selfLoops \
+	-m /cellar/users/decarlin/Data/Benitez/cell_fate_map.sif \
+	-M /cellar/users/decarlin/Data/Benitez/cell_type.tab \
+	-R /cellar/users/decarlin/Data/Benitez/pancreas_tfs.txt \
+
+Benitez_TF2:
+	../scripts/RIGGLE.py \
+	-l 0.01 \
+	-s Benitez_TF2 \
+	-d /cellar/users/decarlin/Data/Benitez/data_centered_scaled_hugo_t.tab \
+	-r /cellar/users/decarlin/projects/TF_collections/TF_collection_2_regulatory_filtlered5.list_t \
+	-D /cellar/users/decarlin/projects/RIGGLE_results/Benitez_tf2 \
+	-m /cellar/users/decarlin/Data/Benitez/cell_fate_map.sif \
+	-M /cellar/users/decarlin/Data/Benitez/cell_type.tab \
+	-R /cellar/users/decarlin/Data/Benitez/pancreas_tfs.txt \
+
 Benitez_PDX1_experiment:
 	../scripts/RIGGLE.py \
 	-s Benitez_PDX1 \
@@ -60,6 +82,15 @@ Benitez_significance_test:
 	ref_file='/cellar/users/decarlin/Data/Benitez/pancreas_tfs.txt'; \
 	figure_location='/cellar/users/decarlin/Data/Benitez/results_TF1/figures/'; \
 	regression_variance_boxplot_geneset; \
+	quit;"
+
+Benitez_pdf:
+	matlab -r "addpath('/cellar/users/decarlin/projects/RIGGLE/scripts'); \
+	pretrial_mat='/cellar/users/decarlin/Data/Benitez/results_TF1/all_pretrial_Benitez_TF1.mat'; \
+	posttrial_mat='/cellar/users/decarlin/Data/Benitez/results_TF1/Benitez_TF1_post_run.mat'; \
+	ref_file='/cellar/users/decarlin/Data/Benitez/pancreas_tfs.txt'; \
+	figure_location='/cellar/users/decarlin/Data/Benitez/results_TF1/figures/'; \
+	regression_variance_ksdensity_geneset; \
 	quit;"
 
 Benitez_push_ndex: Benitez_regression

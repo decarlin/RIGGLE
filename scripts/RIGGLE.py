@@ -27,6 +27,7 @@ if __name__=='__main__':
     parser.add_option("-D", "--directory", dest="run_directory", type='string', default=None)
     parser.add_option("-M", "--sample-metadata", dest='metadata_file', type='string', default=None)
     parser.add_option("-R", "--reference-TF-file", dest="reference_file", type='string', default=None)
+    parser.add_option('-l',"--learning-rate", dest="learning_rate", action='store', type='float', default=0.03, help="learning rate for RBM, default=0.03.  Generally, if things aren't converging, decrease this value")
     (opts,args)=parser.parse_args()
 
     if not os.path.exists(opts.run_directory):
@@ -40,7 +41,7 @@ if __name__=='__main__':
     if opts.regulator_list_file is not None:
 
         #here we run train the RBM
-        subprocess.check_call([dir_path+'/theano_maskedRBM.py -d '+opts.train_data_file +' -r '+opts.regulator_list_file+' -o '+opts.run_directory+'/'+opts.study_name+'.tab'+' -m '+opts.run_directory+'/'+opts.study_name+'_connections.tab'],shell=True)
+        subprocess.check_call([dir_path+'/theano_maskedRBM.py -l '+str(opts.learning_rate)+' -d '+opts.train_data_file +' -r '+opts.regulator_list_file+' -o '+opts.run_directory+'/'+opts.study_name+'.tab'+' -m '+opts.run_directory+'/'+opts.study_name+'_connections.tab'],shell=True)
         regression_input=opts.run_directory+'/'+opts.study_name+'.tab'
     else:
         regression_input=opts.train_data_file
@@ -71,6 +72,6 @@ if __name__=='__main__':
         posttrial_mat=\''+opts.run_directory+'/'+opts.study_name+'_post_run.mat\'; \
         ref_file=\''+opts.reference_file+'\'; \
         figure_location=\''+opts.run_directory+'/figures\'; \
-        regression_variance_cdf_geneset; \
+        regression_variance_ksdensity_geneset; \
         quit;\"'],shell=True)
 
