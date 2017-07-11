@@ -49,7 +49,7 @@ if __name__=='__main__':
 
         #regression in MATLAB
 
-    subprocess.call(['matlab -r \"addpath(\''+dir_path+'\'); \
+    subprocess.call(['matlab -nodesktop -r \"addpath(\''+dir_path+'\'); \
     addpath(\''+dir_path+'/SPG_Multi_Graph\'); \
     addpath(\''+dir_path+'/SPG_singletask\'); \
     indata=\''+regression_input+'\'; \
@@ -67,11 +67,13 @@ if __name__=='__main__':
     quit;\"'],shell=True)
     
     if opts.reference_file is not None:
-        subprocess.call(['matlab -r \"addpath(\''+dir_path+'\'); \
+        subprocess.call(['mkdir '+opts.run_directory+'/figures/'], shell=True)
+
+        subprocess.call(['matlab -nodesktop -r \"addpath(\''+dir_path+'\'); \
         pretrial_mat=\''+opts.run_directory+'/all_pretrial_'+opts.study_name+'.mat\'; \
         posttrial_mat=\''+opts.run_directory+'/'+opts.study_name+'_post_run.mat\'; \
         ref_file=\''+opts.reference_file+'\'; \
-        figure_location=\''+opts.run_directory+'/figures\'; \
+        figure_location=\''+opts.run_directory+'/figures/\'; \
         regression_variance_ksdensity_geneset; \
         quit;\"'],shell=True)
 

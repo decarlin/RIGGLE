@@ -1,3 +1,25 @@
+Nov_TF3_noMirs:
+	../scripts/RIGGLE.py \
+        -l 0.01 \
+        -s Novershtern_TF3_noMirs \
+        -d /cellar/users/decarlin/Data/Novershtern/data_standard_t.tab \
+	-r /cellar/users/decarlin/projects/TF_collections/TF_collection_3_regulatory_noMirs_filtlered5_selfLoops.list_t \
+	-D /cellar/users/decarlin/projects/RIGGLE_results/Novershtern_TF3_noMirs \
+	-m /cellar/users/decarlin/Data/Novershtern/cell_type_graph.sif \
+        -M /cellar/users/decarlin/Data/Novershtern/sample_descriptions.txt \
+        -R /cellar/users/decarlin/projects/progenitor_inference/reference_genesets/hemopoiesis_go.txt
+
+Nov_TF2_self_loops_filter20:
+	../scripts/RIGGLE.py \
+	-l 0.01 \
+	-s Novershtern_TF2_filter20 \
+	-d /cellar/users/decarlin/Data/Novershtern/data_standard_t.tab \
+	-r /cellar/users/decarlin/projects/TF_collections/TF_collection_2_regulatory_filtlered5_selfLoops.list_t \
+	-D /cellar/users/decarlin/projects/RIGGLE_results/Novershtern_TF2_self_loops_filter20 \
+	-m /cellar/users/decarlin/Data/Novershtern/cell_type_graph.sif \
+	-M /cellar/users/decarlin/Data/Novershtern/sample_descriptions.txt \
+	-R /cellar/users/decarlin/projects/progenitor_inference/reference_genesets/hemo_tfs.txt
+
 Nov_TF2:
 	../scripts/RIGGLE.py \
 	-l 0.01 \

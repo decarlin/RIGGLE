@@ -1,12 +1,82 @@
 $RBM_HOME='/cellar/users/decarlin/projects/DomainRegulation'
 $MATLAB_HOME='/cellar/users/decarlin/projects/progenitor_inference'
 
+Benitez_TF3_noMirs_combined:
+	../scripts/RIGGLE.py \
+	-l 0.01 \
+	-s Benitez_TF3_noMirs_combined \
+	-d /cellar/users/decarlin/Data/Benitez/data_centered_scaled_hugo_t.tab \
+	-r /cellar/users/decarlin/projects/TF_collections/TF_collection_3_regulatory_noMirs_filtlered5_selfLoops.list_t \
+	-D /cellar/users/decarlin/projects/RIGGLE_results/Benitez_TF3_noMirs_combined \
+	-m /cellar/users/decarlin/Data/Benitez/cell_fate_map.sif \
+	-M /cellar/users/decarlin/Data/Benitez/cell_type.tab \
+	-R /cellar/users/decarlin/projects/progenitor_inference/reference_genesets/pancreas_combined.txt
+
+Benitez_TF2_combined:
+	../scripts/RIGGLE.py \
+	-l 0.01 \
+	-s Benitez_TF2_combined \
+	-d /cellar/users/decarlin/Data/Benitez/data_centered_scaled_hugo_t.tab \
+	-r /cellar/users/decarlin/projects/TF_collections/TF_collection_2_regulatory_filtlered5_selfLoops.list_t \
+	-D /cellar/users/decarlin/projects/RIGGLE_results/Benitez_TF2_combined \
+	-m /cellar/users/decarlin/Data/Benitez/cell_fate_map.sif \
+	-M /cellar/users/decarlin/Data/Benitez/cell_type.tab \
+	-R /cellar/users/decarlin/projects/progenitor_inference/reference_genesets/pancreas_combined.txt
+
+Benitez_TF2_GO:
+	../scripts/RIGGLE.py \
+	-l 0.01 \
+	-s Benitez_TF2_GO \
+	-d /cellar/users/decarlin/Data/Benitez/data_centered_scaled_hugo_t.tab \
+	-r /cellar/users/decarlin/projects/TF_collections/TF_collection_2_regulatory_filtlered5_selfLoops.list_t \
+	-D /cellar/users/decarlin/projects/RIGGLE_results/Benitez_TF2_GO \
+	-m /cellar/users/decarlin/Data/Benitez/cell_fate_map.sif \
+	-M /cellar/users/decarlin/Data/Benitez/cell_type.tab \
+	-R /cellar/users/decarlin/projects/progenitor_inference/reference_genesets/pancreas_development_go.txt
+
+Benitez_TF2_selfLoops_class_betas:
+	matlab -r "addpath('/cellar/users/decarlin/projects/RIGGLE/scripts'); \
+	pretrial_mat='/cellar/users/decarlin/projects/RIGGLE_results/Benitez_TF2_selfLoops/all_pretrial_Benitez_TF2_selfLoops.mat'; \
+	posttrial_mat='/cellar/users/decarlin/projects/RIGGLE_results/Benitez_TF2_selfLoops/Benitez_TF2_selfLoops_test_post_run.mat'; \
+	output_file='/cellar/users/decarlin/projects/RIGGLE_results/Benitez_TF2_selfLoops/Benitez_TF2_selfLoops_complete_betas.txt'; \
+	extract_full_regulators_by_class_matrix; \
+	quit;"
+
+Benitez_TF2_selfLoops_push_ndex_0.4_filter:
+	python /cellar/users/decarlin/projects/ndex-progenitor-nets/progenitor_nets.py \
+	-s Benitez_TF2_selfLoops \
+	-m /cellar/users/decarlin/Data/Benitez/cell_fate_map.txt \
+	-c ~/projects/RIGGLE_results/Benitez_TF2_selfLoops/Benitez_TF2_selfLoops_connections.tab \
+	-b ~/projects/RIGGLE_results/Benitez_TF2_selfLoops/Benitez_TF2_selfLoops_delta_betas.txt \
+	-n Benitez_TF2_withLoops_cell_fate_map \
+	-d /cellar/users/decarlin/projects/RIGGLE_results/Benitez_TF2_selfLoops/networks_filter_0.4/ \
+	-C 0.4
+
+Benitez_TF2_selfLoops_push_ndex_0.2_filter:
+	python /cellar/users/decarlin/projects/ndex-progenitor-nets/progenitor_nets.py \
+	-s Benitez_TF2_selfLoops \
+	-m /cellar/users/decarlin/Data/Benitez/cell_fate_map.txt \
+	-c ~/projects/RIGGLE_results/Benitez_TF2_selfLoops/Benitez_TF2_selfLoops_connections.tab \
+	-b ~/projects/RIGGLE_results/Benitez_TF2_selfLoops/Benitez_TF2_selfLoops_delta_betas.txt \
+	-n Benitez_TF2_withLoops_cell_fate_map \
+	-d /cellar/users/decarlin/projects/RIGGLE_results/Benitez_TF2_selfLoops/networks_filter_0.2/ \
+	-C 0.2
+
+Benitez_TF2_selfLoops_push_ndex:
+	python /cellar/users/decarlin/projects/ndex-progenitor-nets/progenitor_nets.py \
+	-s Benitez_TF2_selfLoops \
+	-m /cellar/users/decarlin/Data/Benitez/cell_fate_map.txt \
+	-c ~/projects/RIGGLE_results/Benitez_TF2_selfLoops/Benitez_TF2_selfLoops_connections.tab \
+	-b ~/projects/RIGGLE_results/Benitez_TF2_selfLoops/Benitez_TF2_selfLoops_delta_betas.txt \
+	-n Benitez_TF2_withLoops_cell_fate_map \
+	-d /cellar/users/decarlin/projects/RIGGLE_results/Benitez_TF2_selfLoops/networks/
+
 Benitez_TF2_selfLoops:
 	../scripts/RIGGLE.py \
 	-l 0.01 \
 	-s Benitez_TF2_selfLoops \
 	-d /cellar/users/decarlin/Data/Benitez/data_centered_scaled_hugo_t.tab \
-	-r /cellar/users/decarlin/projects/TF_collections/TF_collection_3_regulatory_filtlered5_selfLoops.list_t \
+	-r /cellar/users/decarlin/projects/TF_collections/TF_collection_2_regulatory_filtlered5_selfLoops.list_t \
 	-D /cellar/users/decarlin/projects/RIGGLE_results/Benitez_TF2_selfLoops \
 	-m /cellar/users/decarlin/Data/Benitez/cell_fate_map.sif \
 	-M /cellar/users/decarlin/Data/Benitez/cell_type.tab \

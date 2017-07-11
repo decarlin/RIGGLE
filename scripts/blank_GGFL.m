@@ -115,7 +115,7 @@ ge=shortest_path_error(best_guess(beta'*X(:,test),1), design_matrix(:,test) ,Dis
 mean_ge(i)=mean(ge);
 std_ge(i)=std(ge);
 end
-	   if mean(acc)>best_acc
+	   if mean(acc)>=best_acc
 	   best_acc=mean(acc);
 	   best_gamma=gamma;
 	   end
